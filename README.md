@@ -1,5 +1,13 @@
 # opsed — 给指定文件夹里的动漫写入 OP/ED 章节
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
+[![CI](https://github.com/Pxmy996/opsed/actions/workflows/ci.yml/badge.svg)](https://github.com/Pxmy996/opsed/actions/workflows/ci.yml)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](#快速上手)
+
+**opsed** = OP + ED：纯本地检测片头（OP）/片尾（ED），并把章节**无损**写进 MP4 / MKV，
+让 PotPlayer 进度条上出现章节标记、一键跳过片头片尾。
+
 为**指定的一个文件夹**自动检测片头（OP）和片尾（ED）位置，并把章节信息**无损**写入 MP4 / MKV，
 使 PotPlayer 进度条上出现章节标记、可通过章节跳转快速跳过片头片尾。
 
@@ -82,6 +90,19 @@ opsed --library "$LIB" analyze
 - `minimal` — `OP`、`ED` 两个章节
 - `default` — `OP`、`正片`、`ED`、`预告`（推荐；「正片」可一键跳过片头，「预告」可一键跳过片尾）
 - `full` — 在 0 秒处额外加「前情」标记
+
+---
+
+## 效果
+
+检测完会为每个分组画一张边界抽帧图（`work/artifacts/<分组>__boundaries.png`），
+把 OP 起点/终点、ED 起点/终点前后 ±3 秒的画面拼在一起，用来人工确认边界没判错：
+
+<!-- 有截图后取消下面这行注释，并把图片存为 docs/screenshot.png -->
+<!-- ![边界抽帧验证图](docs/screenshot.png) -->
+
+写入后 PotPlayer 进度条上会出现 `OP` / `正片` / `ED` / `预告` 章节标记，可直接跳转。
+（截图待补：边界图含动画画面，是否随仓库分发由你自己决定。）
 
 ---
 
