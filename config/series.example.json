@@ -1,0 +1,12 @@
+{
+  "我的番 S01": {
+    "title": "My Anime Season 1",
+    "mal_id": 12345,
+    "season": 1
+  },
+  "My Anime S02": {
+    "title": "My Anime Season 2",
+    "mal_id": null,
+    "season": 2
+  }
+}

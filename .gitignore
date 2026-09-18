@@ -1,0 +1,37 @@
+# --- analysis output: never commit, it contains local file names and paths ---
+# (report.json / manifest.jsonl / logs / artifacts / cache all live under work/)
+work/*
+!work/.gitkeep
+
+# --- bundled third-party binaries (fetch with scripts/fetch_tools.ps1) ---
+tools/*
+!tools/.gitkeep
+!tools/README.md
+
+# --- local per-user config (copy config/series.example.json) ---
+config/series.json
+
+# --- Python ---
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- editors / OS ---
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# --- misc junk ---
+*.7z
+*.zip
+*.log

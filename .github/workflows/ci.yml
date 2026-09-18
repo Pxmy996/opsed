@@ -1,0 +1,39 @@
+name: ci
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  check:
+    name: ${{ matrix.os }} / py${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.10", "3.13"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Byte-compile every module
+        run: python -m compileall -q opsed
+
+      - name: CLI loads and self-describes
+        # No media, no external tools needed: this only proves the package
+        # imports cleanly and argparse wiring is intact.
+        run: |
+          python -m opsed.cli --help
+          python -m opsed.cli clean --dry-run

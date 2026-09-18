@@ -1,0 +1,12 @@
+# Normalize line endings for a cross-platform repo.
+* text=auto eol=lf
+
+# Windows-only helper scripts: keep CRLF so they run in a default PowerShell.
+*.ps1 text eol=crlf
+
+# Binary assets, if any are ever added.
+*.png binary
+*.jpg binary
+*.7z binary
+*.zip binary
+*.exe binary
